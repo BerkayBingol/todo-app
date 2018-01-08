@@ -37,9 +37,14 @@ public class TodoController {
 		
 	}
 	@DeleteMapping("/{id}")
-	public String deleteTodoItem(@PathVariable Integer id) {
+	public void deleteTodoItem(@PathVariable Integer id) {
 		todoBO.deleteTodoItem(id);
-		return "deleted item with id:"+id;
+	}
+	@PostMapping("/todo/id/{id}/status/{status}")
+	public void changeTodoItemStatus(@PathVariable Integer id, @PathVariable String status){
+		
+		  todoBO.changeTodoItemStatus(id,status);;
+		
 	}
 
 }

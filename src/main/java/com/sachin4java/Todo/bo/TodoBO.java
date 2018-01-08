@@ -14,4 +14,6 @@ public interface TodoBO {
 
 	List<TodoItem> getTodoItems(boolean complete);
 
+	void changeTodoItemStatus(Integer id, String status);
+
 }

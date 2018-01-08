@@ -46,4 +46,19 @@ public class TodoBOImpl implements TodoBO{
 		return modelMapper.map(list, type);
 	}
 
+	@Override
+	public void changeTodoItemStatus(Integer id, String status) {
+		TodoItemEntity todoItemEntity = todoRepository.findById(id);
+		if(null != todoItemEntity) {
+			if(status != null && status.equals("pending")) {
+				todoItemEntity.setComplete(false);
+			}else {
+				todoItemEntity.setComplete(true);
+			}
+			
+			todoRepository.save(todoItemEntity);
+			
+		}
+	}
+
 }
